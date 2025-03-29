@@ -4,7 +4,9 @@ import { User } from '../model/user.model.js'
 export const isAuthenticated = async (req, res, next) => {
     try {
 
-        const token = req.cookie.token
+        console.log(req.cookies);
+
+        const token = req.cookies.token
         console.log(token)
 
         if (!token) {
@@ -13,7 +15,7 @@ export const isAuthenticated = async (req, res, next) => {
 
 
 
-        const decodeToken = await jwt.verify(token, process.env.JWT_SECRET_KEY)
+        const decodeToken =  jwt.verify(token, process.env.JWT_SECRET_KEY)
 
         if (!decodeToken) {
 
