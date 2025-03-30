@@ -52,8 +52,8 @@ export const getMessage = async (req, res) => {
         const senderId = req.id;
 
         const conversation = await ConversationModel.findOne({
-            participants:[
-                senderId,receiverId
+            participants: [
+                senderId, receiverId
             ]
         }).populate("messages")
         console.log(conversation);
