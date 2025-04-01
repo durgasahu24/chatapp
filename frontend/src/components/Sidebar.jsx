@@ -1,12 +1,21 @@
-import React from 'react'
-import OtherUsers from './OtherUsers.jsx'
+import React, { useState } from 'react'
 import { BiSearchAlt2 } from "react-icons/bi";
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import OtherUsers from './OtherUsers.jsx'
+import { setOtherUsers } from '../redux/userSlice.js';
 
-function Sidebar() {
+
+const Sidebar = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [search, setSearch] = useState("");
+    const { otherUsers } = useSelector(store => store.user)
+
+    console.log("other users in sidebar : ", otherUsers);
+
 
     const logoutHandler = async () => {
         try {
@@ -20,12 +29,28 @@ function Sidebar() {
             console.log("error in logOut : ", error)
         }
     }
+
+    const searchSubmitHandler = (e) => {
+        e.preventDefault();
+        const conversationUser = otherUsers?.find((user) => user.fullName.toLowerCase().includes(search.toLowerCase()));
+        if (conversationUser) {
+            console.log("conversatonUser : ", conversationUser);
+            dispatch(setOtherUsers([conversationUser]));
+        } else {
+            toast.error("User not found!");
+        }
+        console.log("search value : ", search);
+    }
+
+
+
     return (
         <div className='border-r border-slate-500 p-4 flex flex-col'>
-            <form className='flex items-center gap-2'>
+            <form onSubmit={searchSubmitHandler} className='flex items-center gap-2'>
                 <input
-                    // value={search}
-                    // onChange={(e) => setSearch(e.target.value)}
+
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
                     className='input input-bordered rounded-md' type="text"
                     placeholder='Search...'
                 />
@@ -41,5 +66,7 @@ function Sidebar() {
         </div>
     )
 }
+
+
 
 export default Sidebar

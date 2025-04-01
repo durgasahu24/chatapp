@@ -12,7 +12,7 @@ const userSlice = createSlice({
             state.authUser = action.payload;
         },
         setOtherUsers: (state, action) => {
-            console.log("action payload ", action.payload)
+            console.log("action payload otheruser ", action.payload)
             state.otherUsers = action.payload;
         },
         setSelectedUser :(state,action) => {
