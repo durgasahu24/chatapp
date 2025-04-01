@@ -3,7 +3,7 @@ import React from 'react'
 // import useGetOtherUsers from '../hooks/useGetOtherUsers';
 import { useSelector } from "react-redux";
 import OtherUser from './OtherUser';
-import UseGetOthersUsers from '../hooks/UseGetOthersUsers.js';
+import UseGetOthersUsers from '../hooks/useGetOthersUsers.js';
 
 
 
