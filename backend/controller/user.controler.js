@@ -34,7 +34,7 @@ export const register = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const maleProfilePhoto = `https://avatar.iran.liara.run/public/boy?=${username}`
-        const femaleProfilePhoto = `https://avatar.iran.liara.run/public/boy?=${username}`
+        const femaleProfilePhoto = `https://avatar.iran.liara.run/public/girl?=${username}`
 
 
         await User.create({
@@ -139,7 +139,7 @@ export const getOtherUser = async (req, res) => {
 
         const otherUser = await User.find({ _id: { $ne: loggedInUser } }).select("-password")
 
-        return res.status(200).json({ otherUser })
+        return res.status(200).json( otherUser )
 
 
     } catch (error) {

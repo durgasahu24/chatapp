@@ -6,9 +6,6 @@ import { setOtherUsers } from '../redux/userSlice.js';
 function useGetOthersUsers() {
     const dispatch = useDispatch();
 
-    
-   
-    
 
     useEffect(() => {
         const fetchOtherUsers = async () => {
@@ -21,6 +18,7 @@ function useGetOthersUsers() {
             }
         };
         fetchOtherUsers();
+        
     }, [dispatch]);
 }
 

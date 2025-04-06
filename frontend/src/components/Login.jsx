@@ -23,9 +23,9 @@ const Login = () => {
         },
         withCredentials: true
       });
+      dispatch(setAuthUser(res.data));
       navigate("/");
       console.log(res);
-      dispatch(setAuthUser(res.data));
     } catch (error) {
       toast.error(error.response.data.message);
       console.log(error);
