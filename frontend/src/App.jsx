@@ -14,9 +14,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <ProtectedRoute>
         <HomePage />
-      </ProtectedRoute>
     ),
   },
   {
@@ -29,10 +27,13 @@ const router = createBrowserRouter([
   },
 ]);
 
+
+
 function App() {
   const { authUser } = useSelector((store) => store.user);
   const { socket } = useSelector((store) => store.socket);
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     console.log("authUser : ", authUser);

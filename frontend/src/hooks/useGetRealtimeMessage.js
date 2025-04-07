@@ -8,8 +8,7 @@ function useGetRealtimeMessage() {
     const {socket} = useSelector(store => store.socket)
     const {messages} = useSelector(store => store.messages);
 
-    console.log("socket in use get real time : ",socket);
-    console.log("messages in real ",messages);
+  
 
     useEffect(() => {
         socket?.on("newMessage",(newMessage) => {

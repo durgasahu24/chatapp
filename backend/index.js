@@ -6,7 +6,7 @@ import messageRoute from './routes/message.routes.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express from 'express'
-import { app, server } from './sockets/sockets.js'; 
+import { app, server } from './sockets/sockets.js';
 
 dotenv.config();
 
